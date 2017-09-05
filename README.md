@@ -19,7 +19,10 @@ lesx DSL AST解析器。
 ## example
 
 ```javascript
-const parse = require('acorn-lesx');
+const {
+    acornParse,
+    babylonParse,
+} = require('acorn-lesx');
 
 require('colors');
 
@@ -49,16 +52,18 @@ const code = `
 </script>
 `;
 
-const time = `本次解析时长`.red;
-console.time(time);
-const ast = parse(code);
-console.timeEnd(time);
+const acornTime = `acorn解析时长`.red;
+console.time(acornTime);
+const acornAst = acornParse(code);
+console.timeEnd(acornTime);
 
-console.log(JSON.stringify(ast, null, 4));
+const babylonTime = `babylon解析时长`.red;
+console.time(babylonTime);
+const babylonAst = babylonParse(code);
+console.timeEnd(babylonTime);
 
-/**
-打印结果：
-
+console.log('acorn ast:'.blue, JSON.stringify(acornAst, null, 4));
+console.log('babylon ast:'.blue, JSON.stringify(babylonAst, null, 4));
 ```
 
 
