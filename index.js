@@ -21,8 +21,8 @@ exports.babylonParse = (code, opts = {}) => {
         sourceType: "module",
 
         plugins: [
-            // enable lesx and flow syntax
-            'lesx',
+            // enable jsx and flow syntax
+            'jsx',
             "flow"
         ]
     }, opts));

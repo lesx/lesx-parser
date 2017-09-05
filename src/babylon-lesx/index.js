@@ -18,11 +18,11 @@ import type { Expression, File } from "./types";
 
 import estreePlugin from "./plugins/estree";
 import flowPlugin from "./plugins/flow";
-import lesxPlugin from "./plugins/lesx";
+import jsxPlugin from "./plugins/jsx";
 import typescriptPlugin from "./plugins/typescript";
 plugins.estree = estreePlugin;
 plugins.flow = flowPlugin;
-plugins.lesx = lesxPlugin;
+plugins.jsx = jsxPlugin;
 plugins.typescript = typescriptPlugin;
 
 export function parse(input: string, options?: Options): File {
@@ -60,7 +60,7 @@ function getParserClass(
 
   // Filter out just the plugins that have an actual mixin associated with them.
   let pluginList = pluginsFromOptions.filter(
-    p => p === "estree" || p === "flow" || p === "lesx" || p === "typescript",
+    p => p === "estree" || p === "flow" || p === "jsx" || p === "typescript",
   );
 
   if (pluginList.indexOf("flow") >= 0) {
