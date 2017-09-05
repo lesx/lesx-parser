@@ -4,7 +4,4 @@ node_modules
 coverage
 _book
 .idea
-
-# ignore lib dir
-/lib/
 .build
