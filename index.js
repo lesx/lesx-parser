@@ -1,7 +1,7 @@
 'use strict';
 
 const acorn = require('./lib/acorn-lesx')(require('acorn'));
-const babylonLesx = require('./lib/babylon-lesx');
+const babylon = require('./lib/babylon-lesx');
 
 exports.acornParse = (code, opts = {}) => {
     code = `<span>${code}</span>`;
@@ -16,7 +16,7 @@ exports.acornParse = (code, opts = {}) => {
 exports.babylonParse = (code, opts = {}) => {
     code = `<span>${code}</span>`;
     
-    const res = babylonLesx.parse(code, Object.assign({
+    const res = babylon.parse(code, Object.assign({
         // parse in strict mode and allow module declarations
         sourceType: "module",
 
@@ -29,3 +29,5 @@ exports.babylonParse = (code, opts = {}) => {
 
     return res;
 };
+
+exports.babylon = babylon;

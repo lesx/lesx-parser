@@ -1,6 +1,6 @@
 {
   "name": "lesx-parser",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "lesx DSL AST解析器",
   "main": "index.js",
   "scripts": {
