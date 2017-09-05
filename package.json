@@ -1,5 +1,5 @@
 {
-  "name": "acorn-lesx",
+  "name": "lesx-parser",
   "version": "0.0.1",
   "description": "esx DSL AST解析器",
   "main": "index.js",
