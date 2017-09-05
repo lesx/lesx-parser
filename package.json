@@ -1,7 +1,7 @@
 {
   "name": "lesx-parser",
-  "version": "0.0.1",
-  "description": "esx DSL AST解析器",
+  "version": "0.0.2",
+  "description": "lesx DSL AST解析器",
   "main": "index.js",
   "scripts": {
     "build": "rimraf lib && babel src --out-dir lib"
