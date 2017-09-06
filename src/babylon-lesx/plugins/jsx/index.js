@@ -12,7 +12,7 @@ import { isNewLine } from "../../util/whitespace";
 const HEX_NUMBER = /^[da-fA-F]+$/;
 const DECIMAL_NUMBER = /^d+$/;
 
-const specTags = ['style', 'script'];
+const specTags = ['style', 'script', 'template'];
 
 tc.j_oTag = new TokContext("<tag", false);
 tc.j_cTag = new TokContext("</tag", false);
