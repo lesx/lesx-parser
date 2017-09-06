@@ -1,4 +1,4 @@
-# acorn-lesx
+# lesx-parser
 
 lesx DSL AST解析器。
 
@@ -22,7 +22,7 @@ lesx DSL AST解析器。
 const {
     acornParse,
     babylonParse,
-} = require('acorn-lesx');
+} = require('lesx-parser');
 
 require('colors');
 
