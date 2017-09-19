@@ -270,6 +270,7 @@ module.exports = acorn => {
             var node = this.startNodeAt(startPos, startLoc);
             node.namespace = name;
             node.name = this.lesx_parseIdentifier();
+
             return this.finishNode(node, 'LesxNamespacedName');
         },
 
@@ -331,6 +332,7 @@ module.exports = acorn => {
                 ? this.lesx_parseEmptyExpression()
                 : this.parseExpression();
             this.expect(tt.braceR);
+
             return this.finishNode(node, 'LesxExpressionContainer');
         },
 
@@ -360,6 +362,8 @@ module.exports = acorn => {
             var node = this.startNodeAt(startPos, startLoc);
             node.attributes = [];
             node.name = this.lesx_parseElementName();
+            
+            this.__cur_tag = node.name.name;
 
             while (this.type !== tt.slash && this.type !== tt.lesxTagEnd) {
                 node.attributes.push(this.lesx_parseAttribute());
@@ -378,6 +382,7 @@ module.exports = acorn => {
             var node = this.startNodeAt(startPos, startLoc);
             node.name = this.lesx_parseElementName();
             this.expect(tt.lesxTagEnd);
+
             return this.finishNode(node, 'LesxClosingElement');
         },
 
@@ -432,6 +437,8 @@ module.exports = acorn => {
             node.openingElement = openingElement;
             node.closingElement = closingElement;
             node.children = children;
+
+            console.log('node.openingElement:', node.openingElement);
 
             if (this.type === tt.relational && this.value === "<") {
                 this.raise(this.start, "Adjacent Lesx elements must be wrapped in an enclosing tag");
@@ -515,10 +522,6 @@ module.exports = acorn => {
                         // 结束标签名解析后
                         if (code == 62) {
                             ++this.pos;
-
-                            if(this.value) {
-                                this.__cur_tag = this.value;
-                            }
 
                             return this.finishToken(tt.lesxTagEnd);
                         }

@@ -1,6 +1,6 @@
 'use strict';
 
-const acorn = require('./lib/acorn-lesx')(require('acorn'));
+const acorn = require('./src/acorn-lesx')(require('acorn'));
 const babylon = require('./lib/babylon-lesx');
 
 exports.acornParse = (code, opts = {}) => {

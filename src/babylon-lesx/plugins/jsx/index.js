@@ -347,6 +347,7 @@ export default (superClass: Class < Parser > ): Class < Parser > =>
             const node = this.startNodeAt(startPos, startLoc);
             node.attributes = [];
             node.name = this.jsxParseElementName();
+            this.__cur_tag = node.name.name;
             while (!this.match(tt.slash) && !this.match(tt.jsxTagEnd)) {
                 node.attributes.push(this.jsxParseAttribute());
             }
@@ -480,10 +481,6 @@ export default (superClass: Class < Parser > ): Class < Parser > =>
                 }
 
                 if (code === 62) {
-                    if (this.state.value) {
-                        this.__cur_tag = this.state.value;
-                    }
-
                     ++this.state.pos;
                     return this.finishToken(tt.jsxTagEnd);
                 }
